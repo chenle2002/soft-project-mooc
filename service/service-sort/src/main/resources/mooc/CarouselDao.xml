@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.chenle.sortservice.dao.CarouselDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.chenle.sortservice.entity.CarouselEntity" id="carouselMap">
+        <result property="id" column="id"/>
+        <result property="carouselTitle" column="carousel_title"/>
+        <result property="carouselImg" column="carousel_img"/>
+        <result property="carouselUrl" column="carousel_url"/>
+        <result property="carouselTarget" column="carousel_target"/>
+        <result property="statusId" column="status_id"/>
+        <result property="sort" column="sort"/>
+    </resultMap>
+
+
+</mapper>

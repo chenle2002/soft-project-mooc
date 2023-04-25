@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.chenle.sortservice.dao.SortDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.chenle.sortservice.entity.SortEntity" id="sortMap">
+        <result property="id" column="id"/>
+        <result property="zoneName" column="zone_name"/>
+        <result property="zoneDesc" column="zone_desc"/>
+    </resultMap>
+
+
+</mapper>

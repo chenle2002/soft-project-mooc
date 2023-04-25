@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: service-oss
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+
+    alicloud:
+      access-key: LTAI5tRpWutP7Kdvw3ZKdRez
+      secret-key: KYFqX3J2zDw8suaAIMZvxObgIVMYSA
+      oss:
+        endpoint: oss-cn-shanghai.aliyuncs.com
+        bucket: gulimall-chenle
+
+server:
+  port: 8084
