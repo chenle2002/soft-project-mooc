@@ -31,7 +31,7 @@ public class CarouselController {
     /**
      * 列表
      */
-    @RequestMapping("/list")
+    @RequestMapping(value = "/list", method= {RequestMethod.GET, RequestMethod.POST})
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = carouselService.queryPage(params);
 
@@ -42,7 +42,7 @@ public class CarouselController {
     /**
      * 信息
      */
-    @RequestMapping("/info/{id}")
+    @RequestMapping(value = "/info/{id}", method= {RequestMethod.GET, RequestMethod.POST})
     public R info(@PathVariable("id") Integer id){
 		CarouselEntity carousel = carouselService.getById(id);
 
@@ -52,7 +52,7 @@ public class CarouselController {
     /**
      * 保存
      */
-    @RequestMapping("/save")
+    @RequestMapping(value = "/save", method= {RequestMethod.GET, RequestMethod.POST})
     public R save(@RequestBody CarouselEntity carousel){
 		carouselService.save(carousel);
 
@@ -62,7 +62,7 @@ public class CarouselController {
     /**
      * 修改
      */
-    @RequestMapping("/update")
+    @RequestMapping(value = "/update", method= {RequestMethod.GET, RequestMethod.POST})
     public R update(@RequestBody CarouselEntity carousel){
 		carouselService.updateById(carousel);
 
@@ -72,7 +72,7 @@ public class CarouselController {
     /**
      * 删除
      */
-    @RequestMapping("/delete")
+    @RequestMapping(value = "/delete", method= {RequestMethod.GET, RequestMethod.POST})
     public R delete(@RequestBody Integer[] ids){
 		carouselService.removeByIds(Arrays.asList(ids));
 
