@@ -6,6 +6,12 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
+    sentinel:
+      transport:
+        # 服务监控端口
+        dashboard: localhost:8080
+        # 默认 8719，假如被占用了会自动从 8719 开始依次 +1 扫描，直至找到未被占用的端口
+        port: 8721
 
     alicloud:
       access-key: LTAI5tRpWutP7Kdvw3ZKdRez
