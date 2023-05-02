@@ -9,6 +9,12 @@ import com.chenle.courseservice.entity.CourseTreeEntity;
 
 import com.chenle.courseservice.entity.CourserDesEntity;
 import com.chenle.courseservice.service.CourseTreeService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.Parameters;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -31,8 +37,13 @@ public class CourseTreeController {
     @Autowired
     private CourseTreeService courseTreeService;
 
-
-    @RequestMapping("/findgrandfather/{courseId}")
+    @Operation(summary ="根据章节Id寻找父节点Id")
+    @Parameters({
+            @Parameter(name = "courseId",required = true,description = "章节Id")
+    })
+    @ApiResponse(description = "父节点Id", content = @Content(mediaType = "application/json"
+            , schema = @Schema(implementation = Integer.class)))
+    @RequestMapping(value = "/findgrandfather/{courseId}", method= {RequestMethod.GET, RequestMethod.POST})
     public Integer findgrandfather(@PathVariable("courseId") Integer courseId){
         return courseTreeService.findgrandfather(courseId);
     }
@@ -41,7 +52,10 @@ public class CourseTreeController {
     /**
      * 列表
      */
-    @RequestMapping("/list/lingketree")
+    @Operation(summary ="寻找所有课程树结构数据")
+    @ApiResponse(description = "课程树数据", content = @Content(mediaType = "application/json"
+            , schema = @Schema(implementation = List.class)))
+    @RequestMapping(value = "/list/lingketree", method= {RequestMethod.GET, RequestMethod.POST})
     public R listLingKe(){
         log.info(String.valueOf(123));
         List<CourseVo> entityList =  courseTreeService.lislingketree();
@@ -50,7 +64,13 @@ public class CourseTreeController {
     /**
      * 单独需要的课程
      */
-    @RequestMapping("/list/course")
+    @Operation(summary ="根据课程Id寻找课程树实体类")
+    @Parameters({
+            @Parameter(name = "getId",required = true,description = "课程Id")
+    })
+    @ApiResponse(description = "课程树实体类", content = @Content(mediaType = "application/json"
+            , schema = @Schema(implementation = R.class)))
+    @RequestMapping(value = "/list/course", method= {RequestMethod.GET, RequestMethod.POST})
     public R listCourse(@RequestParam Integer getId){
 //        log.info(String.valueOf(123));
         List<CourseTreeEntity> entityList =  courseTreeService.listCourse(getId);
@@ -60,29 +80,49 @@ public class CourseTreeController {
     /**
      * 列表
      */
-    @RequestMapping("/list/tree")
+    @Operation(summary ="返回课程树结构")
+    @ApiResponse(description = "返回课程树结构并封装为R", content = @Content(mediaType = "application/json"
+            , schema = @Schema(implementation = R.class)))
+    @RequestMapping(value = "/list/tree", method= {RequestMethod.GET, RequestMethod.POST})
     public R listWithTree(@RequestParam Map<String, Object> params){
         log.info(String.valueOf(123));
         List<CourseTreeEntity> entityList =  courseTreeService.listWithTree();
         return R.ok().put("page", entityList);
     }
 
+
     /**
      * 列表
      */
-    @RequestMapping("/list")
+    @Operation(summary ="无规律返回课程数据（默认方法不使用）")
+
+    @ApiResponse(description = "返回所有课程树的数据", content = @Content(mediaType = "application/json"
+            , schema = @Schema(implementation = R.class)))
+    @RequestMapping(value = "/list", method= {RequestMethod.GET, RequestMethod.POST})
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = courseTreeService.queryPage(params);
 
         return R.ok().put("page", page);
     }
-    @RequestMapping("/list/grandfather")
+
+
+
+    @Operation(summary ="根据参数寻找父节点")
+    @ApiResponse(description = "课程树数据", content = @Content(mediaType = "application/json"
+            , schema = @Schema(implementation = R.class)))
+    @RequestMapping(value = "/list/grandfather", method= {RequestMethod.GET, RequestMethod.POST})
     public R listgrandfather(@RequestParam Map<String, Object> params){
         PageUtils page = courseTreeService.listgrandfather(params);
 
         return R.ok().put("page", page);
     }
-    @RequestMapping("/list/grandson")
+
+
+
+    @Operation(summary ="根据参数寻找所有子节点")
+    @ApiResponse(description = "课程字节点数据", content = @Content(mediaType = "application/json"
+            , schema = @Schema(implementation = R.class)))
+    @RequestMapping(value = "/list/grandson", method= {RequestMethod.GET, RequestMethod.POST})
     public R grandson(@RequestParam Map<String, Object> params){
         PageUtils page = courseTreeService.listgrandson(params);
 
@@ -92,7 +132,13 @@ public class CourseTreeController {
     /**
      * 信息
      */
-    @RequestMapping("/info/{courseId}")
+    @Operation(summary ="根据课程Id寻寻找课程树实体类")
+    @Parameters({
+            @Parameter(name = "courseId",required = true,description = "课程Id")
+    })
+    @ApiResponse(description = "课程树实体类", content = @Content(mediaType = "application/json"
+            , schema = @Schema(implementation = CourseTreeEntity.class)))
+    @RequestMapping(value = "/info/{courseId}", method= {RequestMethod.GET, RequestMethod.POST})
     public R info(@PathVariable("courseId") Integer courseId){
         CourseTreeEntity courseTree = courseTreeService.getById(courseId);
 
@@ -102,7 +148,13 @@ public class CourseTreeController {
     /**
      * 保存
      */
-    @RequestMapping("/save")
+    @Operation(summary ="保存课程树信息")
+    @Parameters({
+            @Parameter(name = "courseTree",required = true,description = "课程树实体类")
+    })
+    @ApiResponse(description = "返回操作状态码", content = @Content(mediaType = "application/json"
+            , schema = @Schema(implementation = R.class)))
+    @RequestMapping(value = "/save", method= {RequestMethod.GET, RequestMethod.POST})
     public R save(@RequestBody CourseTreeEntity courseTree){
         courseTreeService.save(courseTree);
 
@@ -112,7 +164,10 @@ public class CourseTreeController {
     /**
      * 修改
      */
-    @RequestMapping("/update")
+    @Operation(summary ="修改课程树信息")
+    @ApiResponse(description = "返回操作状态码", content = @Content(mediaType = "application/json"
+            , schema = @Schema(implementation = R.class)))
+    @RequestMapping(value = "/update", method= {RequestMethod.GET, RequestMethod.POST})
     public R update(@RequestBody CourseTreeEntity courseTree){
         courseTreeService.updateById(courseTree);
 
@@ -122,7 +177,10 @@ public class CourseTreeController {
     /**
      * 删除
      */
-    @RequestMapping("/delete")
+    @Operation(summary ="删除课程树信息")
+    @ApiResponse(description = "返回操作状态码", content = @Content(mediaType = "application/json"
+            , schema = @Schema(implementation = R.class)))
+    @RequestMapping(value = "/delete", method= {RequestMethod.GET, RequestMethod.POST})
     public R delete(@RequestBody Integer[] courseIds){
         courseTreeService.removeByIds(Arrays.asList(courseIds));
 

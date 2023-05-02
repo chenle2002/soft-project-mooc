@@ -10,6 +10,7 @@ package com.chenle.common.util;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.apache.http.HttpStatus;
 
 import java.util.HashMap;
@@ -20,6 +21,7 @@ import java.util.Map;
  *
  * @author Mark sunlightcs@gmail.com
  */
+@Schema(name="R",description ="通用返回类" )
 public class R extends HashMap<String, Object> {
 	private static final long serialVersionUID = 1L;
 
