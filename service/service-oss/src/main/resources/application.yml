@@ -5,7 +5,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 127.0.0.1:8848
+        server-addr: 116.204.65.192:8848
     sentinel:
       transport:
         # 服务监控端口

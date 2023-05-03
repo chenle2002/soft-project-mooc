@@ -15,7 +15,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>17</java.version>
+        <java.version>8</java.version>
         <mybatisplus.version>3.3.1</mybatisplus.version>
         <mysql.version>8.0.28</mysql.version>
         <mssql.version>4.0</mssql.version>
@@ -261,6 +261,19 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.2.2.RELEASE</version>
+                <configuration>
+                    <!-- 指定该Main Class为全局的唯一入口 这里是启动类的地址 -->
+                    <mainClass>io.renren.AdminServiceApplication</mainClass>
+                    <layout>ZIP</layout>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal><!--可以把依赖的包都打包到生成的Jar包中-->
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <!-- 跳过单元测试 -->
             <plugin>
