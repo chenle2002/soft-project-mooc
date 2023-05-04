@@ -1,8 +1,6 @@
 FROM openjdk:17
 MAINTAINER chenyh<1922561940@qq.com>
-
-VOLUME /tmp 
-
+VOLUME /tmp
 ADD service-course-1.0-SNAPSHOT.jar service-course-1.0-SNAPSHOT.jar
 
 RUN bash -c 'touch /service-course-1.0-SNAPSHOT.jar'

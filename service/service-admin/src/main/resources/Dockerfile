@@ -1,8 +1,6 @@
 FROM openjdk:17
 MAINTAINER chenyh<1922561940@qq.com>
-
-VOLUME /tmp 
-
+VOLUME /tmp
 ADD service-admin-1.0-SNAPSHOT.jar service-admin-1.0-SNAPSHOT.jar
 
 RUN bash -c 'touch /service-admin-1.0-SNAPSHOT.jar'
