@@ -1,4 +1,4 @@
-### 法途——法学在线教学管理平台（https://github.com/chenle2002/soft-project-mooc）
+### 法途——法学在线教学管理平台（https://github.com/chenle2002/soft-project-mooc)
 > 说明: 这是本项目的后端部分,后台管理系统见(https://github.com/chenle2002/online-mooc-admin),
 用户前端见(https://github.com/chenle2002/online-mooc-web)
 #### 项目介绍
