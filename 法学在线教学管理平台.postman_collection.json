@@ -1,0 +1,896 @@
+{
+	"info": {
+		"_postman_id": "74376a5c-f3f2-42ec-8d0c-869766f8bdfa",
+		"name": "法学在线教学管理平台",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21001615"
+	},
+	"item": [
+		{
+			"name": "课程章节管理",
+			"item": [
+				{
+					"name": "课程树管理",
+					"item": [
+						{
+							"name": "修改课程树信息",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "00a93facb66ae855ed0620a6026f0696",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"courseId\": 0,\r\n  \"name\": \"服务工程\",\r\n  \"parentCid\": 0,\r\n  \"catLevel\": 0,\r\n  \"showStatus\": 0,\r\n  \"icon\": \"软件工程\",\r\n  \"sort\": 0,\r\n  \"video\": \"服务工程视频\",\r\n  \"children\": [\r\n    \"服务工程\"\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://116.204.65.192:8082/course/coursetree/update",
+									"protocol": "http",
+									"host": [
+										"116",
+										"204",
+										"65",
+										"192"
+									],
+									"port": "8082",
+									"path": [
+										"course",
+										"coursetree",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "保存课程树信息",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "00a93facb66ae855ed0620a6026f0696",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"courseId\": 0,\r\n  \"name\": \"服务工程\",\r\n  \"parentCid\": 0,\r\n  \"catLevel\": 0,\r\n  \"showStatus\": 0,\r\n  \"icon\": \"软件工程\",\r\n  \"sort\": 0,\r\n  \"video\": \"服务工程视频\",\r\n  \"children\": [\r\n    \"服务工程\"\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://116.204.65.192:8082/course/coursetree/save",
+									"protocol": "http",
+									"host": [
+										"116",
+										"204",
+										"65",
+										"192"
+									],
+									"port": "8082",
+									"path": [
+										"course",
+										"coursetree",
+										"save"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "返回课程树结构",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "00a93facb66ae855ed0620a6026f0696",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://116.204.65.192:8082/course/coursetree/list/tree",
+									"protocol": "http",
+									"host": [
+										"116",
+										"204",
+										"65",
+										"192"
+									],
+									"port": "8082",
+									"path": [
+										"course",
+										"coursetree",
+										"list",
+										"tree"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "课程章节信息管理",
+					"item": [
+						{
+							"name": "获取vedio加密信息",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "00a93facb66ae855ed0620a6026f0696",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://116.204.65.192:8082/course/courserdes/video/policy",
+									"protocol": "http",
+									"host": [
+										"116",
+										"204",
+										"65",
+										"192"
+									],
+									"port": "8082",
+									"path": [
+										"course",
+										"courserdes",
+										"video",
+										"policy"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "修改课程章节信息",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "00a93facb66ae855ed0620a6026f0696",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": 6,\r\n  \"description\": \"修改一下课程\",\r\n  \"sortId\": 6,\r\n  \"course_id\": 6,\r\n  \"teacherId\": 6,\r\n  \"name\": \"服务工程\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://116.204.65.192:8082/course/courserdes/update",
+									"protocol": "http",
+									"host": [
+										"116",
+										"204",
+										"65",
+										"192"
+									],
+									"port": "8082",
+									"path": [
+										"course",
+										"courserdes",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "保存课程章节信息",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "00a93facb66ae855ed0620a6026f0696",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": 6,\r\n  \"description\": \"好课\",\r\n  \"sortId\": 6,\r\n  \"course_id\": 6,\r\n  \"teacherId\": 6,\r\n  \"name\": \"服务工程\"\r\n  \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://116.204.65.192:8082/course/courserdes/save",
+									"protocol": "http",
+									"host": [
+										"116",
+										"204",
+										"65",
+										"192"
+									],
+									"port": "8082",
+									"path": [
+										"course",
+										"courserdes",
+										"save"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "评论信息管理",
+					"item": [
+						{
+							"name": "修改评论信息",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "00a93facb66ae855ed0620a6026f0696",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": 2,\r\n  \"userId\": 1,\r\n  \"courseId\": 5,\r\n  \"information\": \"十分不错\"\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://116.204.65.192:8082/course/common/update",
+									"protocol": "http",
+									"host": [
+										"116",
+										"204",
+										"65",
+										"192"
+									],
+									"port": "8082",
+									"path": [
+										"course",
+										"common",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取所有评论信息",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://116.204.65.192:8082/course/common/list",
+									"protocol": "http",
+									"host": [
+										"116",
+										"204",
+										"65",
+										"192"
+									],
+									"port": "8082",
+									"path": [
+										"course",
+										"common",
+										"list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取该课程的所有评论",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n                \"id\": 2,\r\n                \"userId\": 1,\r\n                \"courseId\": 5\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://116.204.65.192:8082/course/common/getcommon",
+									"protocol": "http",
+									"host": [
+										"116",
+										"204",
+										"65",
+										"192"
+									],
+									"port": "8082",
+									"path": [
+										"course",
+										"common",
+										"getcommon"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "课程分类管理",
+			"item": [
+				{
+					"name": "课程分类信息管理",
+					"item": [
+						{
+							"name": "新增分类数据表",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "00a93facb66ae855ed0620a6026f0696",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": 6,\r\n  \"zoneName\": \"计算机\",\r\n  \"zoneDesc\": \"好专业\",\r\n  \"courseList\": [\r\n    {\r\n      \"id\": 66,\r\n      \"courseName\": \"服务工程1\",\r\n      \"courseLogo\": \"好课选他\"\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://116.204.65.192:8085/sort/sort/save",
+									"protocol": "http",
+									"host": [
+										"116",
+										"204",
+										"65",
+										"192"
+									],
+									"port": "8085",
+									"path": [
+										"sort",
+										"sort",
+										"save"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "修改分类信息表",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "00a93facb66ae855ed0620a6026f0696",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": 6,\r\n  \"zoneName\": \"计算机\",\r\n  \"zoneDesc\": \"好专业\",\r\n  \"courseList\": [\r\n    {\r\n      \"id\": 66,\r\n      \"courseName\": \"服务工程2\",\r\n      \"courseLogo\": \"有点难度\",\r\n      \"rulingPrice\": 66,\r\n      \"coursePrice\": 66\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://116.204.65.192:8085/sort/sort/update",
+									"protocol": "http",
+									"host": [
+										"116",
+										"204",
+										"65",
+										"192"
+									],
+									"port": "8085",
+									"path": [
+										"sort",
+										"sort",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取所有分类表数据",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "00a93facb66ae855ed0620a6026f0696",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://116.204.65.192:8085/sort/sort/list",
+									"protocol": "http",
+									"host": [
+										"116",
+										"204",
+										"65",
+										"192"
+									],
+									"port": "8085",
+									"path": [
+										"sort",
+										"sort",
+										"list"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "轮播图数据管理",
+					"item": [
+						{
+							"name": "获取用户主页的轮播图数据",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "00a93facb66ae855ed0620a6026f0696",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://116.204.65.192:8085/sort/carousel/list",
+									"protocol": "http",
+									"host": [
+										"116",
+										"204",
+										"65",
+										"192"
+									],
+									"port": "8085",
+									"path": [
+										"sort",
+										"carousel",
+										"list"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "阿里云OSS",
+			"item": [
+				{
+					"name": "获取pdf的加密信息",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://116.204.65.192:8084/oss/courserdes/pdf/policy",
+							"protocol": "http",
+							"host": [
+								"116",
+								"204",
+								"65",
+								"192"
+							],
+							"port": "8084",
+							"path": [
+								"oss",
+								"courserdes",
+								"pdf",
+								"policy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "返回vedio加密信息",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "00a93facb66ae855ed0620a6026f0696",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://116.204.65.192:8084/oss/courserdes/video/policy",
+							"protocol": "http",
+							"host": [
+								"116",
+								"204",
+								"65",
+								"192"
+							],
+							"port": "8084",
+							"path": [
+								"oss",
+								"courserdes",
+								"video",
+								"policy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获取image的加密信息",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "00a93facb66ae855ed0620a6026f0696",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://116.204.65.192:8084/oss/courserdes/image/policy",
+							"protocol": "http",
+							"host": [
+								"116",
+								"204",
+								"65",
+								"192"
+							],
+							"port": "8084",
+							"path": [
+								"oss",
+								"courserdes",
+								"image",
+								"policy"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "用户成员管理",
+			"item": [
+				{
+					"name": "用户管理",
+					"item": [
+						{
+							"name": "管理员保存一个新用户",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "00a93facb66ae855ed0620a6026f0696",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": 8,\r\n  \"username\": \"坤坤\",\r\n  \"password\": \"123456\",\r\n  \"status\": 0\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://116.204.65.192:8083/member/user/save",
+									"protocol": "http",
+									"host": [
+										"116",
+										"204",
+										"65",
+										"192"
+									],
+									"port": "8083",
+									"path": [
+										"member",
+										"user",
+										"save"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "修改用户信息",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "00a93facb66ae855ed0620a6026f0696",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": 8,\r\n  \"username\": \"小鸡子\",\r\n  \"password\": \"123\",\r\n  \"status\": 0\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://116.204.65.192:8083/member/user/update",
+									"protocol": "http",
+									"host": [
+										"116",
+										"204",
+										"65",
+										"192"
+									],
+									"port": "8083",
+									"path": [
+										"member",
+										"user",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取所有用户信息",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "00a93facb66ae855ed0620a6026f0696",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://116.204.65.192:8083/member/user/list",
+									"protocol": "http",
+									"host": [
+										"116",
+										"204",
+										"65",
+										"192"
+									],
+									"port": "8083",
+									"path": [
+										"member",
+										"user",
+										"list"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "人员管理",
+					"item": [
+						{
+							"name": "保存教师信息",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "00a93facb66ae855ed0620a6026f0696",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"teacherId\": 3,\r\n  \"name\": \"好老师\",\r\n  \"description\": \"是一个特别好的老师\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://116.204.65.192:8083/member/teacher/save",
+									"protocol": "http",
+									"host": [
+										"116",
+										"204",
+										"65",
+										"192"
+									],
+									"port": "8083",
+									"path": [
+										"member",
+										"teacher",
+										"save"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取所有教师的信息",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "00a93facb66ae855ed0620a6026f0696",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://116.204.65.192:8083/member/teacher/list",
+									"protocol": "http",
+									"host": [
+										"116",
+										"204",
+										"65",
+										"192"
+									],
+									"port": "8083",
+									"path": [
+										"member",
+										"teacher",
+										"list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "修改老师的信息",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "00a93facb66ae855ed0620a6026f0696",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"teacherId\": 3,\r\n  \"name\": \"张雪峰\",\r\n  \"description\": \"考研名师\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://116.204.65.192:8083/member/teacher/update",
+									"protocol": "http",
+									"host": [
+										"116",
+										"204",
+										"65",
+										"192"
+									],
+									"port": "8083",
+									"path": [
+										"member",
+										"teacher",
+										"update"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
