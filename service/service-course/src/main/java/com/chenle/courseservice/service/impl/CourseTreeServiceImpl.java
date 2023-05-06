@@ -55,6 +55,19 @@ public class CourseTreeServiceImpl extends ServiceImpl<CourseTreeDao, CourseTree
 
         return level1;
     }
+    //递归查找当前菜单的子菜单
+    private List<CourseTreeEntity> getchildren(CourseTreeEntity root, List<CourseTreeEntity> all) {
+        List<CourseTreeEntity> child = all.stream().filter(CourseTreeEntity -> {
+            return root.getCourseId().equals(CourseTreeEntity.getParentCid());
+        }).map(CourseTreeEntity -> {
+            CourseTreeEntity.setChildren(getchildren(CourseTreeEntity, all));
+            return CourseTreeEntity;
+        }).sorted((menu1, menu2) -> {
+            return (menu1.getSort() == null ? 0 : menu1.getSort()) - (menu2.getSort() == null ? 0 : menu2.getSort());
+        }).collect(Collectors.toList());
+
+        return child;
+    }
 
     @Override
     public PageUtils listgrandfather(Map<String, Object> params) {
@@ -170,17 +183,5 @@ public class CourseTreeServiceImpl extends ServiceImpl<CourseTreeDao, CourseTree
         return collect;
     }
 
-    //递归查找当前菜单的子菜单
-    private List<CourseTreeEntity> getchildren(CourseTreeEntity root, List<CourseTreeEntity> all) {
-        List<CourseTreeEntity> child = all.stream().filter(CourseTreeEntity -> {
-            return root.getCourseId().equals(CourseTreeEntity.getParentCid());
-        }).map(CourseTreeEntity -> {
-            CourseTreeEntity.setChildren(getchildren(CourseTreeEntity, all));
-            return CourseTreeEntity;
-        }).sorted((menu1, menu2) -> {
-            return (menu1.getSort() == null ? 0 : menu1.getSort()) - (menu2.getSort() == null ? 0 : menu2.getSort());
-        }).collect(Collectors.toList());
 
-        return child;
-    }
 }
