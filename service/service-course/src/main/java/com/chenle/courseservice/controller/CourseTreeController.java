@@ -1,10 +1,12 @@
 package com.chenle.courseservice.controller;
 
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.chenle.common.util.PageUtils;
 import com.chenle.common.util.R;
 import com.chenle.common.vo.CourseVo;
+import com.chenle.courseservice.config.GlobeHandler;
 import com.chenle.courseservice.entity.CourseTreeEntity;
 
 import com.chenle.courseservice.entity.CourserDesEntity;
@@ -86,6 +88,7 @@ public class CourseTreeController {
     @ApiResponse(description = "返回课程树结构并封装为R", content = @Content(mediaType = "application/json"
             , schema = @Schema(implementation = R.class)))
     @RequestMapping(value = "/list/tree", method= {RequestMethod.GET, RequestMethod.POST})
+    @SentinelResource(value = "listWithTree", fallbackClass = GlobeHandler.class, defaultFallback = "listWithTree")
     public R listWithTree(@RequestParam Map<String, Object> params){
         log.info(String.valueOf(123));
         List<CourseTreeEntity> entityList =  courseTreeService.listWithTree();

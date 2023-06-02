@@ -20,7 +20,7 @@ spring:
         # 服务监控端口
         dashboard: localhost:8080
         # 默认 8719，假如被占用了会自动从 8719 开始依次 +1 扫描，直至找到未被占用的端口
-        port: 8723
+        port: 8085
 
 mybatis-plus:
   mapper-locations: classpath:/mapper/**/*.xml
@@ -34,3 +34,9 @@ server:
 logging:
   level:
     com.chenle.mooc: debug
+
+feign:
+  hystrix:
+    enabled: true #服务降级
+  circuitbreaker:
+    enabled: true # 上面无效 使用下面 服务降级

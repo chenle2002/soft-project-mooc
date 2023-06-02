@@ -1,11 +1,14 @@
 package com.chenle.sortservice.controller;
 
 
+import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.chenle.common.util.PageUtils;
 import com.chenle.common.util.R;
 import com.chenle.sortservice.entity.SortEntity;
+import com.chenle.sortservice.openfeign.CourseServiceFeign;
 import com.chenle.sortservice.service.SortService;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
@@ -14,6 +17,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
@@ -33,6 +37,22 @@ import java.util.Map;
 public class SortController {
     @Autowired
     private SortService sortService;
+    @Autowired
+    CourseServiceFeign courseServiceFeign;
+
+
+    @RequestMapping(value = "/test", method= {RequestMethod.GET, RequestMethod.POST})
+    @CircuitBreaker(name = "backendA",fallbackMethod = "fallbackHello")
+    public R test(){
+        return courseServiceFeign.listbySort(1);
+    }
+
+    public R fallbackHello(Throwable e){
+        e.printStackTrace();
+        System.out.println("fallback已经调用");
+        String s = "fallback";
+        return R.error(250,"课程信息微服务暂不可用，请稍后再试！");
+    }
 
     @Operation(summary ="根据传来的分类Id获取该分类的实体类")
     @RequestMapping(value = "/getone/{sortId}", method= {RequestMethod.GET, RequestMethod.POST})
@@ -49,13 +69,17 @@ public class SortController {
     @Operation(summary ="获取用户主页显示的所有课程并进行结构封装")
     @ApiResponse(description = "返回所有课程信息数据并封装为R", content = @Content(mediaType = "application/json", schema = @Schema(implementation = R.class)))
     @RequestMapping(value = "/list/zone", method= {RequestMethod.GET, RequestMethod.POST})
-    public R getzone(){
-        List<SortEntity> page = sortService.getzone();
-
-        return R.ok().put("page", page);
+    @CircuitBreaker(name = "backzone",fallbackMethod = "fallbackzone")
+    public R getzone() throws Exception {
+        return sortService.getzone();
     }
 
-
+    public R fallbackzone(Throwable e){
+        e.printStackTrace();
+        System.out.println( "业务异常~~~~:" + e.getMessage() + "~~~:"  + e.getClass());
+        System.out.println("fallbackzone");
+        return R.error(250,"下游服务发生熔断，下游服务（课程服务）暂不可用，请稍后再试！");
+    }
 
 
     /**

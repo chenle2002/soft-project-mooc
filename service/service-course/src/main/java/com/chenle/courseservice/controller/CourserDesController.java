@@ -1,12 +1,16 @@
 package com.chenle.courseservice.controller;
 
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.chenle.common.entity.UserEntity;
 import com.chenle.common.util.PageUtils;
 import com.chenle.common.util.R;
 import com.chenle.common.vo.CourseDesResVo;
 import com.chenle.common.vo.CourseDesVo;
+import com.chenle.courseservice.config.GlobeBlockException;
+import com.chenle.courseservice.config.GlobeHandler;
 import com.chenle.courseservice.entity.CourserDesEntity;
 import com.chenle.courseservice.openfeign.OssServiceFeign;
 
@@ -59,10 +63,22 @@ public class CourserDesController {
     })
     @ApiResponse(description = "返回该分类的所有课程信息并封装为List<CourserDesEntity>", content = @Content(mediaType = "application/json"
             , schema = @Schema(implementation = List.class)))
+    @SentinelResource(value = "listbySort", fallbackClass = GlobeHandler.class, defaultFallback = "listbySortHandler")
     @RequestMapping(value = "/listbySort/{zoneId}", method= {RequestMethod.GET, RequestMethod.POST})
-    public List<CourserDesEntity> listbySort(@PathVariable("zoneId") Integer zoneId){
-        return courserDesService.listbySort(zoneId);
+    public R listbySort(@PathVariable("zoneId") Integer zoneId) throws InterruptedException {
+//        Thread.currentThread().sleep(1000);
+        return R.ok().put("data",courserDesService.listbySort(zoneId));
     }
+
+
+
+    @GetMapping("/test/{name}")
+    @SentinelResource(value = "testBlock", fallbackClass = GlobeHandler.class, defaultFallback = "fallBackHandler")
+    public String test(@PathVariable("name") String name)
+    {
+        return name + "~~~~~~ ";
+    }
+
 
 
 
@@ -145,6 +161,7 @@ public class CourserDesController {
 
         return R.ok().put("data", data);
     }
+
     /**
      * 保存
      */

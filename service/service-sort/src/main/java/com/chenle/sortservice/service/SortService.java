@@ -2,6 +2,7 @@ package com.chenle.sortservice.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.chenle.common.util.PageUtils;
+import com.chenle.common.util.R;
 import com.chenle.sortservice.entity.SortEntity;
 
 import java.util.List;
@@ -17,6 +18,6 @@ public interface SortService extends IService<SortEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
 
-    List<SortEntity> getzone();
+    R getzone();
 }
 

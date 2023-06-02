@@ -14,6 +14,8 @@ import lombok.Data;
 @Data
 @Schema(name="TeacherInfoVo",description ="教师信息封装" )
 public class TeacherInfoVo {
+    @Schema(name="machineCode",description ="机器编号" )
+    private Integer machineCode;
     @Schema(name="id",description ="教师Id" )
     private Integer id;
     @Schema(name="lecturerName",description ="教师名" )
