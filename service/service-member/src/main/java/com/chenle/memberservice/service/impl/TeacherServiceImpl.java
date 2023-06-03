@@ -43,7 +43,7 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherDao, TeacherEntity> i
         TeacherEntity teacher = this.getOne(new QueryWrapper<TeacherEntity>().eq("teacher_id", teacherId));
 
         TeacherInfoVo teacherInfoVo = new TeacherInfoVo();
-        teacherInfoVo.setMachineCode(1);
+        teacherInfoVo.setMachineCode(111);
         teacherInfoVo.setId(teacher.getTeacherId());
         teacherInfoVo.setLecturerName(teacher.getName());
         teacherInfoVo.setLecturerMobile("18313876850");

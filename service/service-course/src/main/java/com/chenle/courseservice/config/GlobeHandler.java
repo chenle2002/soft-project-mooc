@@ -9,14 +9,6 @@ import com.chenle.common.util.R;
  * @Version 1.0
  */
 public class GlobeHandler {
-    public static String fallBackHandler(Throwable e)
-    {
-        if(e instanceof BlockException)
-        {
-            return "limit异常~~~:" + e.getClass();
-        }
-        return "业务异常~~~~:" + e.getMessage() + "~~~:"  + e.getClass();
-    }
     public static R listbySortHandler(Throwable e){
         return R.error(300,"获取分类的请求过于频繁，请稍后再试！");
     }

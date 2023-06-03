@@ -19,7 +19,7 @@ spring:
     sentinel:
       transport:
         # 服务监控端口
-        dashboard: localhost:8080
+        dashboard: 116.204.65.192:8070
         # 默认 8719，假如被占用了会自动从 8719 开始依次 +1 扫描，直至找到未被占用的端口
         port: 8720
 
@@ -36,3 +36,6 @@ server:
 logging:
   level:
     com.chenle.mooc: debug
+service-course:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.alibaba.cloud.nacos.ribbon.NacosRule  # 负载均衡规则

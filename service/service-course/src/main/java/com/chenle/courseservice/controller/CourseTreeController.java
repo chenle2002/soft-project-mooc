@@ -90,7 +90,6 @@ public class CourseTreeController {
     @RequestMapping(value = "/list/tree", method= {RequestMethod.GET, RequestMethod.POST})
     @SentinelResource(value = "listWithTree", fallbackClass = GlobeHandler.class, defaultFallback = "listWithTree")
     public R listWithTree(@RequestParam Map<String, Object> params){
-        log.info(String.valueOf(123));
         List<CourseTreeEntity> entityList =  courseTreeService.listWithTree();
         return R.ok().put("page", entityList);
     }
