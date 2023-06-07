@@ -26,6 +26,17 @@ public class CommonServiceImpl extends ServiceImpl<CommonDao, CommonEntity> impl
 
     @Autowired
     MemberServiceFeign memberServiceFeign;
+
+    Random r = new Random();
+    @Override
+    public PageUtils queryPage(Map<String, Object> params) {
+        IPage<CommonEntity> page = this.page(
+                new Query<CommonEntity>().getPage(params),
+                new QueryWrapper<CommonEntity>()
+        );
+
+        return new PageUtils(page);
+    }
     @Override
     public List<CommonVo> getBycourseId(Integer courseId) {
         List<CommonEntity> commonEntities = this.baseMapper.selectList(new QueryWrapper<CommonEntity>().eq("course_id", courseId));
@@ -42,16 +53,6 @@ public class CommonServiceImpl extends ServiceImpl<CommonDao, CommonEntity> impl
             return commonVo;
         }).collect(Collectors.toList());
         return id1;
-    }
-    Random r = new Random();
-    @Override
-    public PageUtils queryPage(Map<String, Object> params) {
-        IPage<CommonEntity> page = this.page(
-                new Query<CommonEntity>().getPage(params),
-                new QueryWrapper<CommonEntity>()
-        );
-
-        return new PageUtils(page);
     }
 
 }
