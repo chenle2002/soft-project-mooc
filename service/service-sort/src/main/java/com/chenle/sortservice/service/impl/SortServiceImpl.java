@@ -29,17 +29,6 @@ public class SortServiceImpl extends ServiceImpl<SortDao, SortEntity> implements
 
     @Autowired
     CourseServiceFeign courseServiceFeign;
-
-    @Override
-    public PageUtils queryPage(Map<String, Object> params) {
-        IPage<SortEntity> page = this.page(
-                new Query<SortEntity>().getPage(params),
-                new QueryWrapper<SortEntity>()
-        );
-
-        return new PageUtils(page);
-    }
-
     @Override
     public R getzone() {
         List<SortEntity> sortEntities = this.baseMapper.selectList(null);
@@ -74,5 +63,16 @@ public class SortServiceImpl extends ServiceImpl<SortDao, SortEntity> implements
         }
         return R.ok().put("page", collect);
     }
+    @Override
+    public PageUtils queryPage(Map<String, Object> params) {
+        IPage<SortEntity> page = this.page(
+                new Query<SortEntity>().getPage(params),
+                new QueryWrapper<SortEntity>()
+        );
+
+        return new PageUtils(page);
+    }
+
+
 }
 
