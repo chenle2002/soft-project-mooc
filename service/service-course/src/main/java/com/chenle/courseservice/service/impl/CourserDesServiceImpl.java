@@ -51,30 +51,6 @@ public class CourserDesServiceImpl extends ServiceImpl<CourserDesDao, CourserDes
     }
 
 
-    @Override
-    public List<CourseDesResVo> listWithName(Map<String, Object> params) {
-        List<CourserDesEntity> desEntities = this.baseMapper.selectList(null);
-        List<CourseDesResVo> collect = desEntities.stream().map(item -> {
-            CourseDesResVo courseDesResVo = new CourseDesResVo();
-
-            Integer sortId = item.getSortId();
-            if (sortId != null) {
-                SortEntity sort_id = sortServiceFeign.getone(sortId);
-                courseDesResVo.setSortName(sort_id.getZoneName());
-            }
-            Integer teacherId = item.getTeacherId();
-            if (teacherId != null) {
-                TeacherEntity teacher_id = memberServiceFeign.getoneTeacher(teacherId);
-                courseDesResVo.setTeacherName(teacher_id.getName());
-            }
-            courseDesResVo.setId(item.getId());
-            courseDesResVo.setName(item.getName());
-            courseDesResVo.setDescription(item.getDescription());
-            courseDesResVo.setImage(item.getImage());
-            return courseDesResVo;
-        }).collect(Collectors.toList());
-        return collect;
-    }
 
     @Override
     public List<CourserDesEntity> listbySort(Integer zoneId) {
@@ -154,4 +130,28 @@ public class CourserDesServiceImpl extends ServiceImpl<CourserDesDao, CourserDes
         return courseDesVo;
     }
 
+    @Override
+    public List<CourseDesResVo> listWithName(Map<String, Object> params) {
+        List<CourserDesEntity> desEntities = this.baseMapper.selectList(null);
+        List<CourseDesResVo> collect = desEntities.stream().map(item -> {
+            CourseDesResVo courseDesResVo = new CourseDesResVo();
+
+            Integer sortId = item.getSortId();
+            if (sortId != null) {
+                SortEntity sort_id = sortServiceFeign.getone(sortId);
+                courseDesResVo.setSortName(sort_id.getZoneName());
+            }
+            Integer teacherId = item.getTeacherId();
+            if (teacherId != null) {
+                TeacherEntity teacher_id = memberServiceFeign.getoneTeacher(teacherId);
+                courseDesResVo.setTeacherName(teacher_id.getName());
+            }
+            courseDesResVo.setId(item.getId());
+            courseDesResVo.setName(item.getName());
+            courseDesResVo.setDescription(item.getDescription());
+            courseDesResVo.setImage(item.getImage());
+            return courseDesResVo;
+        }).collect(Collectors.toList());
+        return collect;
+    }
 }

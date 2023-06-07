@@ -23,17 +23,6 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherDao, TeacherEntity> i
 
     @Autowired
     CourseServiceFeign courseServiceFeign;
-
-    @Override
-    public PageUtils queryPage(Map<String, Object> params) {
-        IPage<TeacherEntity> page = this.page(
-                new Query<TeacherEntity>().getPage(params),
-                new QueryWrapper<TeacherEntity>()
-        );
-
-        return new PageUtils(page);
-    }
-
     @Override
     public TeacherInfoVo getTeacherInfo(Integer courseId) {
         System.out.println(courseId);
@@ -52,5 +41,16 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherDao, TeacherEntity> i
         teacherInfoVo.setIntroduce("<p>  " + teacher.getDescription() + "</p>");
         return teacherInfoVo;
     }
+    @Override
+    public PageUtils queryPage(Map<String, Object> params) {
+        IPage<TeacherEntity> page = this.page(
+                new Query<TeacherEntity>().getPage(params),
+                new QueryWrapper<TeacherEntity>()
+        );
+
+        return new PageUtils(page);
+    }
+
+
 
 }

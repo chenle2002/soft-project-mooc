@@ -49,8 +49,8 @@ public class CourserDesController {
     @Parameters({
             @Parameter(name = "findgrandfather",required = true,description = "课程章节Id"),
     })
-    @ApiResponse(description = "返回该章节的父级结构并封装为CourserDesEntity", content = @Content(mediaType = "application/json"
-            , schema = @Schema(implementation = CourserDesEntity.class)))
+    @ApiResponse(description = "返回该章节的父级结构并封装为CourserDesEntity", content = @Content(
+            mediaType = "application/json", schema = @Schema(implementation = CourserDesEntity.class)))
     @RequestMapping(value = "/getone/{findgrandfather}", method= {RequestMethod.GET, RequestMethod.POST})
     public CourserDesEntity getone(@PathVariable("findgrandfather") Integer findgrandfather){
         return courserDesService.getOne(new QueryWrapper<CourserDesEntity>().eq("course_id", findgrandfather));
@@ -61,7 +61,8 @@ public class CourserDesController {
     @Parameters({
             @Parameter(name = "zoneId",required = true,description = "分类Id"),
     })
-    @ApiResponse(description = "返回该分类的所有课程信息并封装为List<CourserDesEntity>", content = @Content(mediaType = "application/json"
+    @ApiResponse(description = "返回该分类的所有课程信息并封装为List<CourserDesEntity>",
+            content = @Content(mediaType = "application/json"
             , schema = @Schema(implementation = List.class)))
     @SentinelResource(value = "listbySort", fallbackClass = GlobeHandler.class, defaultFallback = "listbySortHandler")
     @RequestMapping(value = "/listbySort/{zoneId}", method= {RequestMethod.GET, RequestMethod.POST})
