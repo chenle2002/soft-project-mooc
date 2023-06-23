@@ -54,4 +54,5 @@ public class CommonServiceImpl extends ServiceImpl<CommonDao, CommonEntity> impl
         }).collect(Collectors.toList());
         return id1;
     }
+
 }

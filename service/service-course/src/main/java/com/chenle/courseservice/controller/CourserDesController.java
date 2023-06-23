@@ -61,7 +61,8 @@ public class CourserDesController {
     @Parameters({
             @Parameter(name = "zoneId",required = true,description = "分类Id"),
     })
-    @ApiResponse(description = "返回该分类的所有课程信息并封装为List<CourserDesEntity>", content = @Content(mediaType = "application/json"
+    @ApiResponse(description = "返回该分类的所有课程信息并封装为List<CourserDesEntity>",
+            content = @Content(mediaType = "application/json"
             , schema = @Schema(implementation = List.class)))
     @SentinelResource(value = "listbySort", fallbackClass = GlobeHandler.class, defaultFallback = "listbySortHandler")
     @RequestMapping(value = "/listbySort/{zoneId}", method= {RequestMethod.GET, RequestMethod.POST})

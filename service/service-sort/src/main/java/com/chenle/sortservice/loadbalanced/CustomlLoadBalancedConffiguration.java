@@ -10,12 +10,6 @@ import org.springframework.core.env.Environment;
 
 public class CustomlLoadBalancedConffiguration {
 
-//    @Bean
-//    ReactorLoadBalancer<ServiceInstance> randomLoadBalancer(Environment environment, LoadBalancerClientFactory loadBalancerClientFactory){
-//        String name = environment.getProperty(LoadBalancerClientFactory.PROPERTY_NAME);
-//        ReactorLoadBalancer reactorLoadBalancer = new RandomLoadBalancer(loadBalancerClientFactory.getLazyProvider(name, ServiceInstanceListSupplier.class),name);
-//        return reactorLoadBalancer;
-//    }
 
     @Bean
     ReactorLoadBalancer<ServiceInstance> roundrobinLoadBalancer(Environment environment, LoadBalancerClientFactory loadBalancerClientFactory){

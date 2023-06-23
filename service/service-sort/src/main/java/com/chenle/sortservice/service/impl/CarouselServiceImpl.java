@@ -26,4 +26,5 @@ public class CarouselServiceImpl extends ServiceImpl<CarouselDao, CarouselEntity
         return new PageUtils(page);
     }
 
+
 }
